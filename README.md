@@ -21,6 +21,13 @@ document the actor's input/output through tests and the larger system gets the h
 
 #### "If In Doubt, Push It Out"
 
+> Instead of letting actors grow, let common behaviour or longer-running tasks be delegated to workers
+
+Actors can quickly grow in behaviour and responsibilities. This in turn can increase the risk of failure which can, and will, impact all children and clients. 
+If you find yourself squinting whilst reasoning about the actor, consider pushing out common behaviour to an shortly-lived "worker". This worker is given `sender()` 
+and all the other parameters it needs at creation time, and is then left to complete/wait/do whatever to achieve the task, stopping itself once complete. The added benefit
+is that you keep your actors small and encourage `K.I.S.S` through reduced responsibilities and behaviour that's testable and reusable.
+
 ### Structural / Creational
 
 #### Companion Object
