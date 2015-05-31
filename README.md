@@ -34,12 +34,12 @@ The Error Kernel pattern is taken from Erlang's
 
 #### "If In Doubt, Push It Out"
 
-> Instead of letting actors grow, let common behaviour or longer-running tasks be delegated to workers
+> Instead of letting an actor's behaviour grow, delegate common behaviour or longer-running tasks to workers
 
 Actors can quickly grow in behaviour and responsibilities. This in turn can increase the risk of failure which can, and will, impact all children and clients. 
 If you find yourself squinting whilst reasoning about the actor, consider pushing out common behaviour to an shortly-lived "worker". This worker is given `sender()` 
 and all the other parameters it needs at creation time, and is then left to complete/wait/do whatever to achieve the task, stopping itself once complete. The added benefit
-is that you keep your actors small and encourage `K.I.S.S` through reduced responsibilities and behaviour that's testable and reusable.
+is that you keep your actors small and encourage `K.I.S.S` through reduced responsibilities and behaviour that's testable and reusable. This is especially true for non-trivial domains.
 
 ### Structural / Creational
 
@@ -49,7 +49,7 @@ In Scala, one can define a companion object that can be used as a factory for cr
 question. In Akka this can be used for two purposes:
 
  1. Simplifying the creation of `Props` for the actor
- 2. Grouping the messages (case classes) used for communicating with the actor: both input and output
+ 2  Grouping the messages (case classes) used for communicating with the actor: both input and output
 
 Consider this actor:
 
