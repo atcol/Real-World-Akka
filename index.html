@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Real-world-akka : Concepts, patterns and best practices for implementing actor systems using Akka">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Real-world-akka</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/atc-/Real-World-Akka">View on GitHub</a>
+
+          <h1 id="project_title">Real-world-akka</h1>
+          <h2 id="project_tagline">Concepts, patterns and best practices for implementing actor systems using Akka</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/atc-/Real-World-Akka/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/atc-/Real-World-Akka/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="real-world-akka" class="anchor" href="#real-world-akka" aria-hidden="true"><span class="octicon octicon-link"></span></a>Real World Akka</h1>
+
+<p>This project aims to collect a set of recommendations and best practices for implementing actor systems using Akka.
+Whilst most examples may be in Scala, the concepts, practices and recommendations should apply to Java too. </p>
+
+<h1>
+<a id="designing-actor-systems" class="anchor" href="#designing-actor-systems" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designing Actor Systems</h1>
+
+<h2>
+<a id="the-one-rule" class="anchor" href="#the-one-rule" aria-hidden="true"><span class="octicon octicon-link"></span></a>The One Rule</h2>
+
+<p>Test first. It's easy. Your interface is <code>tell</code> and you give it messages. It's that simple. Implement your actors
+through their tests, following the "Test. Code. Refactor." mantra. You will fail to reason correctly if you can't
+document the actor's input/output through tests and the larger system gets the harder it will be to reason.</p>
+
+<h2>
+<a id="patterns" class="anchor" href="#patterns" aria-hidden="true"><span class="octicon octicon-link"></span></a>Patterns</h2>
+
+<h3>
+<a id="cameo" class="anchor" href="#cameo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cameo</h3>
+
+<h3>
+<a id="anonymous-worker" class="anchor" href="#anonymous-worker" aria-hidden="true"><span class="octicon octicon-link"></span></a>Anonymous Worker</h3>
+
+<h3>
+<a id="if-in-doubt-push-it-out" class="anchor" href="#if-in-doubt-push-it-out" aria-hidden="true"><span class="octicon octicon-link"></span></a>"If In Doubt, Push It Out"</h3>
+
+<h1>
+<a id="testing-actor-systems" class="anchor" href="#testing-actor-systems" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing Actor Systems</h1>
+
+<h2>
+<a id="the-one-rule-1" class="anchor" href="#the-one-rule-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>The One Rule</h2>
+
+<p>Yes, this bit's repeated. It's that important: </p>
+
+<blockquote>
+<p>Test first. It's easy. Your interface is <code>tell</code> and you give it messages. It's that simple. Implement your actors
+through their tests, following the "Test. Code. Refactor." mantra. You will fail to reason correctly if you can't
+document the actor's input/output through tests and the larger system gets the harder it will be to reason.</p>
+</blockquote>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Real-world-akka maintained by <a href="https://github.com/atc-">atc-</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
