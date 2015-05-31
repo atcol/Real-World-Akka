@@ -48,8 +48,8 @@ is that you keep your actors small and encourage `K.I.S.S` through reduced respo
 In Scala, one can define a companion object that can be used as a factory for creation of instances of the class in
 question. In Akka this can be used for two purposes:
 
-	1. Simplifying the creation of `Props` for the actor
-	2. Grouping the messages (case classes) used for communicating with the actor: both input and output
+ 1. Simplifying the creation of `Props` for the actor
+ 2. Grouping the messages (case classes) used for communicating with the actor: both input and output
 
 Consider this actor:
 
