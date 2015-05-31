@@ -5,11 +5,24 @@ Whilst most examples may be in Scala, the concepts, practices and recommendation
 
 # Designing Actor Systems
 
+Background reading and videos:
+
+ * [Designing Actor Based Applications](http://www.nljug.org/jfall/session/akka-in-practice-designing-actor-based-application/34/)
+ * [A Crash Course in Failure](http://web.archive.org/web/20090430014122/http://nplus1.org/articles/a-crash-course-in-failure/)
+
+
 ## The One Rule
 
 Test first. It's easy. Your interface is `tell` and you give it messages. It's that simple. Implement your actors
 through their tests, following the "Test. Code. Refactor." mantra. You will strugle to reason about your actors if you can't
 document the actor's input/output through tests and the larger system gets the harder it will be to reason.
+
+## The Error Kernel
+
+> Push higher-risk work to the leaf nodes, leaving state and longer living actors as parents
+
+The Error Kernel pattern is taken from Erlang's 
+
 
 ## Patterns
 
@@ -36,7 +49,7 @@ In Scala, one can define a companion object that can be used as a factory for cr
 question. In Akka this can be used for two purposes:
 
 	1. Simplifying the creation of `Props` for the actor
-  2. Grouping the messages (case classes) used for communicating with the actor: both input and output
+	2. Grouping the messages (case classes) used for communicating with the actor: both input and output
 
 Consider this actor:
 
@@ -61,7 +74,7 @@ Consider this actor:
 
 `CounterActor` accepts 5 different message types: `Int`, `Freeze`, `DistributeValue`, `Subscribe` and `Unfreeze`, none of which are
 externally documented. Furthermore the creation of the Actor requires two inputs, which in most cases will be default
-starting values -- zero and empty respectively -- thus pushing burden on the client/user. Instead, we could use a
+starting values -- zero and empty respectively -- thus burdening the client/user. Instead, we could use a
 companion object to hide this creation detail and document the different message types:
 
 	object CounterActor {
@@ -84,9 +97,14 @@ you just write:
 	context.actorOf(CounterActor.props())
 	
 and not only save on the typing, but avoid having to scour receive blocks to determine the message types as they're
-clearly documented in the companion object.
+clearly documented in the companion object. Of course this is even easier considering you've tested first...
 
 # Testing Actor Systems
+
+Background reading and videos:
+
+ * [Akka Documentation on Testing](http://doc.akka.io/docs/akka/snapshot/scala/testing.html)
+ * [Testing Actors and FSMs by Roland Kuhn](https://skillsmatter.com/skillscasts/3235-actors-fsm-akka)
 
 ## The One Rule
 
@@ -95,5 +113,7 @@ Yes, this bit's repeated. It's that important:
 > Test first. It's easy. Your interface is `tell` and you give it messages. It's that simple. Implement your actors
 > through their tests, following the "Test. Code. Refactor." mantra. You will strugle to reason about your actors if you can't
 > document the actor's input/output through tests and the larger system gets the harder it will be to reason.
+
+## Failures
 
 [![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)  <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Real World Akka</span> by [Alex Collins](http://github.com/atc-/RealWorldAkka) is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/). Based on a work at [http://github.com/atc-/RealWorldAkka](http://github.com/atc-/RealWorldAkka).
