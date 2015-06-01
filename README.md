@@ -34,8 +34,6 @@ document the actor's input/output through tests and the larger system gets the h
 
 > Push higher-risk work to the leaf nodes, leaving state and longer living actors as parents
 
-The Error Kernel pattern is taken from Erlang's 
-
 
 ## Patterns
 
