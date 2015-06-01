@@ -49,7 +49,7 @@ In Scala, one can define a companion object that can be used as a factory for cr
 question. In Akka this can be used for two purposes:
 
  1. Simplifying the creation of `Props` for the actor
- 2  Grouping the messages (case classes) used for communicating with the actor: both input and output
+ 2.  Grouping the messages (case classes) used for communicating with the actor: both input and output
 
 Consider this actor:
 
@@ -60,8 +60,8 @@ Consider this actor:
 		def receive: Receive = normal(initialSubscribers)
 
 		def normal(subs: List[ActorRef]): Receive = {
-			case i: Int 					=> from = from + i 
-			case Freeze 					=> context.become(frozen)
+			case i: Int => from = from + i 
+			case Freeze => context.become(frozen)
 			case s@Subscribe(a)		=> context.become(normal(subs + a))
 			case DistributeValue 	=> subscribers.foreach(who => who ! Value(from))
 		}
