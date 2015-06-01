@@ -5,6 +5,12 @@ Whilst most examples may be in Scala, the concepts, practices and recommendation
 
 # General Programming Guidelines
 
+## Top Three
+
+ 1. Never block
+ 2. Never pass mutable state: don't close over fields, `sender()` or `self` references
+ 3. Encourage granular, hierarchical structure instead of enlarging top-level actors
+
 ## "If In Doubt, Push It Out"
 
 > Instead of letting an actor's behaviour grow, delegate common behaviour or longer-running tasks to workers
