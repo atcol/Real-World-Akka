@@ -1,7 +1,20 @@
 # Real World Akka
 
 This project aims to collect a set of recommendations and best practices for implementing actor systems using Akka.
-Whilst most examples may be in Scala, the concepts, practices and recommendations should apply to Java too. 
+Whilst most examples may be in Scala, the concepts, practices and recommendations should apply to Java too.
+
+# General Programming Guidelines
+
+## "If In Doubt, Push It Out"
+
+> Instead of letting an actor's behaviour grow, delegate common behaviour or longer-running tasks to workers
+
+The riskier the task, the further from the centre its actor should lie.
+
+Actors can quickly grow in behaviour and responsibilities. This in turn can increase the risk of failure which can, and will, impact all children and clients. 
+If you find yourself squinting whilst reasoning about the actor, consider pushing out common behaviour to an shortly-lived "worker". This worker is given `sender()` 
+and all the other parameters it needs at creation time, and is then left to complete/wait/do whatever to achieve the task, stopping itself once complete. The added benefit
+is that you keep your actors small and encourage `K.I.S.S` through reduced responsibilities and behaviour that's testable and reusable. This is especially true for non-trivial domains.
 
 # Designing Actor Systems
 
@@ -31,15 +44,6 @@ The Error Kernel pattern is taken from Erlang's
 #### Cameo 
 
 #### Anonymous Worker
-
-#### "If In Doubt, Push It Out"
-
-> Instead of letting an actor's behaviour grow, delegate common behaviour or longer-running tasks to workers
-
-Actors can quickly grow in behaviour and responsibilities. This in turn can increase the risk of failure which can, and will, impact all children and clients. 
-If you find yourself squinting whilst reasoning about the actor, consider pushing out common behaviour to an shortly-lived "worker". This worker is given `sender()` 
-and all the other parameters it needs at creation time, and is then left to complete/wait/do whatever to achieve the task, stopping itself once complete. The added benefit
-is that you keep your actors small and encourage `K.I.S.S` through reduced responsibilities and behaviour that's testable and reusable. This is especially true for non-trivial domains.
 
 ### Structural / Creational
 
